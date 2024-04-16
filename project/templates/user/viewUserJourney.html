@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home One || Conexi || Responsive HTML 5 Template</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="../../static/userResources/image/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../../static/userResources/image/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../../static/userResources/image/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../static/userResources/image/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../../static/userResources/image/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../static/userResources/image/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../../static/userResources/image/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../static/userResources/image/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../static/userResources/image/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../static/userResources/image/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../static/userResources/image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../../static/userResources/image/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../static/userResources/image/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="userResources/image/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../static/userResources/css/style.css">
+    <link rel="stylesheet" href="../../static/userResources/css/responsive.css">
+</head>
+
+<body>
+<div class="preloader"></div><!-- /.preloader -->
+<div class="page-wrapper">
+
+    {% include 'user/header.html' %}
+
+
+    <!-- /.main-banner-wrapper -->
+    <section class="inner-banner">
+        <div class="container">
+            <ul class="thm-breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><span class="sep">.</span></li>
+                <li><span class="page-title">Manage UserJourney</span></li>
+                <li><span class="sep">.</span></li>
+                <li><span class="page-title">View UserJourney</span></li>
+            </ul><!-- /.thm-breadcrumb -->
+            <h2>View UserJourney</h2>
+        </div><!-- /.container -->
+    </section>
+
+
+    <section class="book-ride-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h3 class="form-block-title">View UserJourney</h3>
+                        <div class="table-responsive advance-table">
+                            <table id="button_datatables_example"
+                                   class="table display table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>User JourneyType</th>
+                                    <th>User SourceState</th>
+                                    <th>User SourceCity</th>
+                                    <th>User DestinationState</th>
+                                    <th>User DestinationCity</th>
+                                    <th>User JourneyDate</th>
+                                    <th>User JourneyTime</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row1 in range(userJourneyListLength) %}
+
+                                    <tr>
+
+                                        <td>{{ userSourceJourneyVOList[row1][1]['sharingTypeName'] }}</td>
+                                        <td>{{ userSourceJourneyVOList[row1][2]['stateName'] }}</td>
+                                        <td>{{ userSourceJourneyVOList[row1][3]['cityName'] }}</td>
+                                        <td>{{ userDestinationJourneyVOList[row1][2]['stateName'] }}</td>
+                                        <td>{{ userDestinationJourneyVOList[row1][3]['cityName'] }}</td>
+                                        <td>{{ userDestinationJourneyVOList[row1][0]['userJourneyDate'] }}</td>
+                                        <td>{{ userDestinationJourneyVOList[row1][0]['userJourneyTime'] }}</td>
+                                        <td>
+                                            <a href="/user/editUserJourney?userJourneyId={{ userDestinationJourneyVOList[row1][0]['userJourneyId'] }}">Edit
+                                                / </a> <a
+                                                href="/user/deleteUserJourney?userJourneyId={{ userDestinationJourneyVOList[row1][0]['userJourneyId'] }}">Delete</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div><!-- /.row --><!-- /.booking-form-one -->
+                </div><!-- /.col-lg-8 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.book-ride-one -->
+
+    {% include 'user/footer.html' %}
+
+    </section><!-- /.cta-style-one -->
+
+</div><!-- /.page-wrapper -->
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+<!-- /.scroll-to-top -->
+<script src="../../static/userResources/js/jquery.js"></script>
+<script src="../../static/userResources/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/userResources/js/owl.carousel.min.js"></script>
+<script src="../../static/userResources/js/bootstrap-select.min.js"></script>
+<script src="../../static/userResources/js/jquery.magnific-popup.min.js"></script>
+<script src="../../static/userResources/js/waypoints.min.js"></script>
+<script src="../../static/userResources/js/jquery.counterup.min.js"></script>
+<script src="../../static/userResources/js/jquery.bxslider.min.js"></script>
+<script src="../../static/userResources/js/theme.js"></script>
+</body>
+
+</html>

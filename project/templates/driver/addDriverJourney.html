@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Seipkon is a Premium Quality Admin Site Responsive Template"/>
+    <meta name="keywords"
+          content="driver template, driver, driver dashboard, cms, Seipkon Admin, premium driver templates, responsive driver, panel, software, ui, web app, application"/>
+    <meta name="author" content="Themescare">
+    <!-- Title -->
+    <title>Seipkon - Bootstrap Admin Template</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../../static/driverResources/image/favicon-32x32.png">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/animate.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/bootstrap.min.css">
+    <!-- Font awesome CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/font-awesome.min.css">
+    <!-- Themify Icon CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/themify-icons.css">
+    <!-- Perfect Scrollbar CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/perfect-scrollbar.min.css">
+    <!-- Toggles CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/toggles-full.css">
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/select2.min.css">
+    <!-- Color Picker CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/bootstrap-colorpicker.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/seipkon.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../../static/driverResources/css/responsive.css">
+
+    <script type="text/javascript">
+
+        function loadSourceCityDriverJourney() {
+
+            var driverJourney_SourceStateId = document.getElementById("driverJourney_SourceStateId")
+
+            var driverJourney_SourceCityId = document.getElementById("driverJourney_SourceCityId")
+
+            driverJourney_SourceCityId.innerHTML = ""
+
+            var ajax = new XMLHttpRequest()
+
+            ajax.onreadystatechange = function () {
+
+                if (ajax.readyState == 4) {
+
+
+                    var json = JSON.parse(ajax.responseText)
+
+                    for (var i = 0; i < json.length; i++) {
+
+                        var option = document.createElement("option")
+
+                        option.value = json[i].cityId;
+                        option.text = json[i].cityName;
+
+                        driverJourney_SourceCityId.options.add(option)
+                    }
+                }
+            }
+            ajax.open("get", "/driver/ajaxSourceCityDriverJourney?driverJourney_SourceStateId=" + driverJourney_SourceStateId.value, true)
+
+            ajax.send()
+        }
+
+        function loadDestinationCityDriverJourney() {
+
+            var driverJourney_DestinationStateId = document.getElementById("driverJourney_DestinationStateId")
+
+            var driverJourney_DestinationCityId = document.getElementById("driverJourney_DestinationCityId")
+
+            driverJourney_DestinationCityId.innerHTML = ""
+
+            var ajax = new XMLHttpRequest()
+
+            ajax.onreadystatechange = function () {
+
+                if (ajax.readyState == 4) {
+
+
+                    var json = JSON.parse(ajax.responseText)
+
+                    for (var i = 0; i < json.length; i++) {
+
+                        var option = document.createElement("option")
+
+                        option.value = json[i].cityId;
+                        option.text = json[i].cityName;
+
+                        driverJourney_DestinationCityId.options.add(option)
+                    }
+                }
+            }
+            ajax.open("get", "/driver/ajaxDestinationCityDriverJourney?driverJourney_DestinationStateId=" + driverJourney_DestinationStateId.value, true)
+
+            ajax.send()
+        }
+    </script>
+
+
+</head>
+<body>
+
+<!-- Start Page Loading -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+<!-- End Page Loading -->
+
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <!-- Main Header Start -->
+    {% include 'driver/header.html' %}
+    <!-- Main Header End -->
+
+    <!-- Sidebar Start -->
+
+
+    {% include 'driver/menu.html' %}
+    <!-- End Sidebar -->
+
+    <!-- Right Side Content Start -->
+    <section id="content" class="seipkon-content-wrapper">
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- Breadcromb Row Start -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcromb-area">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="seipkon-breadcromb-left">
+                                        <h3>ADD DRIVER JOURNEY</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="seipkon-breadcromb-right">
+                                        <ul>
+                                            <li><a href="index.html">Home</a></li>
+                                            <li>Add DriverJourney</li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Breadcromb Row -->
+                <!-- Validation Form Row Start -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-box">
+                            <div class="form-example">
+                                <div class="form-validation-box">
+                                    <div class="form-wrap">
+                                        <form data-parsley-validate action="/driver/insertDriverJourney"
+                                              enctype="multipart/form-data" method="POST">
+
+
+                                            <h3>Driver Journey type</h3>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Journey Type</label>
+                                                        <select class="form-control" name="driverJourney_SharingTypeId"
+                                                                required>
+                                                            <option>Select Type</option>
+                                                            {% for row in sharingTypeVOList %}
+                                                                <option value="{{ row['sharingTypeId'] }}">{{ row['sharingTypeName'] }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <h3>Driver Source point</h3>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">StateName</label>
+                                                        <select class="form-control" name="driverJourney_SourceStateId"
+                                                                id="driverJourney_SourceStateId"
+                                                                onchange="loadSourceCityDriverJourney()" required>
+                                                            <option>Select State</option>
+                                                            {% for row in stateVOList %}
+                                                                <option value="{{ row['stateId'] }}">{{ row['stateName'] }}</option>
+                                                            {% endfor %}
+                                                        </select>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">CityName</label>
+                                                        <select class="form-control" name="driverJourney_SourceCityId"
+                                                                id="driverJourney_SourceCityId" required>
+                                                            <option>Select City</option>
+                                                        </select>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <h3>Driver Destination point</h3>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">StateName</label>
+                                                        <select class="form-control"
+                                                                name="driverJourney_DestinationStateId"
+                                                                id="driverJourney_DestinationStateId"
+                                                                onchange="loadDestinationCityDriverJourney()" required>
+                                                            <option>Select State</option>
+                                                            {% for row in stateVOList %}
+                                                                <option value="{{ row['stateId'] }}">{{ row['stateName'] }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">CityName</label>
+                                                        <select class="form-control"
+                                                                name="driverJourney_DestinationCityId"
+                                                                id="driverJourney_DestinationCityId" required>
+                                                            <option>Select City</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Journey Date</label>
+                                                        <input type="date" class="form-control"
+                                                               name="driverJourneyDate">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Journey Time</label>
+                                                        <input type="time" class="form-control"
+                                                               name="driverJourneyTime">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <div class="form-layout-submit">
+                                                        <button type="submit" value="submit" class="btn btn-info">
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- End Validation Form Row -->
+
+            </div>
+        </div>
+
+        <!-- Footer Area Start -->
+
+
+        {% include 'driver/footer.html' %}
+        <!-- End Footer Area -->
+
+    </section>
+    <!-- End Right Side Content -->
+
+</div>
+<!-- End Wrapper -->
+
+
+<!-- jQuery -->
+<script src="../../static/driverResources/js/jquery-3.1.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="../../static/driverResources/js/bootstrap.min.js"></script>
+<!-- Perfect Scrollbar JS -->
+<script src="../../static/driverResources/js/jquery-perfect-scrollbar.min.js"></script>
+<!-- Toggles JS -->
+<script src="../../static/driverResources/js/jquery.maskedinput.min.js"></script>
+<!-- Select2 JS -->
+<script src="../../static/driverResources/js/select2.full.js"></script>
+<!-- Jquery parsley JS -->
+<script src="../../static/driverResources/js/parsley.min.js"></script>
+<!-- Custom JS -->
+<script src="../../static/driverResources/js/seipkon.js"></script>
+</body>
+</html>
+
+
