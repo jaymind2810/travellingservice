@@ -33,8 +33,7 @@ def userInsertUser():
         loginVO = LoginVO()
         loginDAO = LoginDAO()
 
-        print(loginVO, "-----------and ----------", loginDAO)
-
+        # # =========== Mail Send Functionality ===============
         # sender = "travelingtransport1@gmail.com"
         #
         # receiver = loginUsername
@@ -64,9 +63,9 @@ def userInsertUser():
         loginVO.loginRole = "user"
         loginVO.loginStatus = "active"
         loginDAO.insertLogin(loginVO)
-        print(loginVO, "000000000 login VO")
+        # print(loginVO, "000000000 login VO")
 
-        print("loginId", loginVO.loginId)
+        # print("loginId", loginVO.loginId)
 
         userFirstName = request.form['userFirstName']
         userLastName = request.form['userLastName']
@@ -88,11 +87,13 @@ def userInsertUser():
 
 
         userDAO.insertUser(userVO)
+        app.logger.info('--------New User Created.------------')
 
         # server.quit()
 
         return redirect('/')
     except Exception as ex:
+        app.logger.error('A warning occurred to Create user.')
         print(ex)
 
 

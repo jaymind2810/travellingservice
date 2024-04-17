@@ -199,7 +199,7 @@ def driverInsertDriverJourney():
                                                          destinationCityName, driverJourneyDate, driverJourneyTime,
                                                          vehicleName, vehicleNumber, seaterCapacity, driverContact)
                     print(textMsg, "--------Driver Journy Details----------")
-                    #
+                    # # =========== Mail Send Functionality ===============
                     # msg['From'] = sender
                     #
                     # msg['To'] = receiver

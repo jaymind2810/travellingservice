@@ -33,6 +33,7 @@ def driverInsertDriver():
         loginVO = LoginVO()
         loginDAO = LoginDAO()
 
+        # # =========== Mail Send Functionality ===============
         # sender = "travelingtransport1@gmail.com"
         #
         # receiver = loginUsername
@@ -63,8 +64,6 @@ def driverInsertDriver():
         loginVO.loginStatus = "active"
         loginDAO.insertLogin(loginVO)
 
-        print("loginId", loginVO.loginId)
-
         driverFirstName = request.form['driverFirstName']
         driverLastName = request.form['driverLastName']
         driverGender = request.form['driverGender']
@@ -84,11 +83,13 @@ def driverInsertDriver():
         driverVO.driver_LoginId = loginVO.loginId
 
         driverDAO.insertDriver(driverVO)
+        app.logger.info('--------New Driver Created.------------')
 
         # server.quit()
 
         return redirect('/')
     except Exception as ex:
+        app.logger.error('A warning occurred to Create driver')
         print(ex)
 
 

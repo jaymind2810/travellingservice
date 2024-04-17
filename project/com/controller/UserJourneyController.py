@@ -184,6 +184,7 @@ def userInsertUserJourney():
 
                     print(textMsg, "--------User Insert journey-----------")
 
+                    # # =========== Mail Send Functionality ===============
                     # msg['From'] = sender
                     #
                     # msg['To'] = receiver

@@ -3,6 +3,8 @@ from datetime import timedelta
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import click
+import re
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -36,5 +38,43 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 
 import project.com.controller
 
+
+from project.com.vo.LoginVO import LoginVO
+from project.com.dao.LoginDAO import LoginDAO
+
+@app.cli.command("create-admin")
+def create_user():
+    username = input("Enter your email or username: ")
+    password = input("Enter your password: ")
+    password1 = input("Again, Confirm your password: ")
+
+    email_regex = r"^[^@]+@[^@]+\.[^@]+$"
+
+    if bool(re.match(email_regex, username)) is False:
+        app.logger.error('Email address is not valid.')
+        return
+
+    if password != password1:
+        app.logger.error('Password is not match.')
+        return
+
+    loginVO = LoginVO()
+    loginDAO = LoginDAO()
+
+    loginVO.loginUsername = username
+    loginVO.loginPassword = password
+    loginVO.loginRole = "admin"
+    loginVO.loginStatus = "active"
+    loginDAO.insertLogin(loginVO)
+
+    print("Admin loginId", loginVO.loginId)
+
+    app.logger.info('Admin login credential created.')
+
+
+# @app.cli.command("create-user")
+# @click.argument("name")
+# def create_user(name):
+#     print("Herer--------In Command---------", name)
 
 
