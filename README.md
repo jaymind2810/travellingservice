@@ -5,7 +5,6 @@
 # Travelling And Transport Services
 </div>
 
-#
 
 ## Overview
 
@@ -15,7 +14,6 @@ First, User have to register here. then, registered users have the ability to bo
 
 Driver have to register here too. then, registered driver have the ability to add their vehicle details and make post for available to ride or transport. so user can book ride or transport functionality.
 
-#
 
 ## Cloning the repository
 
@@ -48,7 +46,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-#
 
 ## Running the App
 
@@ -61,7 +58,6 @@ python3 Main.py
 
 => If, there is any error running server then you can use to change port and try to run again
 
-#
 
 ## Database :
 
@@ -69,7 +65,6 @@ python3 Main.py
         
 > travelingdb
 
-#
 
 ## Create Admin Credential :
 
