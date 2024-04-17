@@ -5,17 +5,20 @@
 # Travelling And Transport Services
 </div>
 
-### Overview
 #
+
+## Overview
+
 Web application based on flask.
 
 First, User have to register here. then, registered users have the ability to book ride according their requirements. They can also book transport functionality.
 
 Driver have to register here too. then, registered driver have the ability to add their vehicle details and make post for available to ride or transport. so user can book ride or transport functionality.
 
-
-### Cloning the repository
 #
+
+## Cloning the repository
+
 => Clone the repository using the command below :
 ```bash
 git clone https://github.com/jaymind2810/travellingservice.git
@@ -45,8 +48,10 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Running the App
 #
+
+## Running the App
+
 => To run the App, we use :
 ```bash
 python3 Main.py
@@ -56,16 +61,18 @@ python3 Main.py
 
 => If, there is any error running server then you can use to change port and try to run again
 
-
-### Database :
 #
+
+## Database :
+
 => Create Database name :
         
 > travelingdb
 
-
-### Create Admin Credential :
 #
+
+## Create Admin Credential :
+
 - You can create admin by command line.
 > cd project
 >
